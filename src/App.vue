@@ -2,20 +2,20 @@
   <div class='container'>
       <div class="header">看点资讯</div>
       <div class="left">
-        <el-menu @select='selectHandler' default-active='Article'>
-          <el-menu-item index="Article">
+        <el-menu default-active='Article' router>
+          <el-menu-item index="article">
             <i class="el-icon-tickets"></i>
             <span slot="title">文章管理</span>
           </el-menu-item>
-          <el-menu-item index="Category">
+          <el-menu-item index="category">
             <i class="el-icon-menu"></i>
             <span slot="title">栏目管理</span>
           </el-menu-item>
-          <el-menu-item index="User">
+          <el-menu-item index="user">
             <i class="el-icon-document"></i>
             <span slot="title">用户管理</span>
           </el-menu-item>
-          <el-menu-item index="Comment">
+          <el-menu-item index="comment">
             <i class="el-icon-setting"></i>
             <span slot="title">评论管理</span>
           </el-menu-item>
@@ -23,38 +23,40 @@
       </div>
       <div class="right">
         <div class="warpper">
-          <keep-alive>
+          
+          <router-view></router-view>
+          <!-- <keep-alive>
             <component :is="currentPage"></component>
-          </keep-alive>
+          </keep-alive> -->
         </div>
       </div>
   </div>
 </template>
 
 <script>
-import Article from './pages/Article.vue'
-import Category from './pages/Category.vue'
-import User from './pages/User.vue'
-import Comment from './pages/Comment.vue'
+// import Article from './pages/Article.vue'
+// import Category from './pages/Category.vue'
+// import User from './pages/User.vue'
+// import Comment from './pages/Comment.vue'
 
 export default {
   name: 'App',
   data(){
     return {
-      currentPage:'Article'
+      // currentPage:'Article'
     }
   },
-  components: {
-    Article,
-    Category,
-    User,
-    Comment
-  },
+  // components: {
+  //   Article,
+  //   Category,
+  //   User,
+  //   Comment
+  // },
   methods:{
     // 切换右侧组件
-    selectHandler(index){
-      this.currentPage = index;
-    }
+    // selectHandler(index){
+    //   this.currentPage = index;
+    // }
   }
 }
 </script>

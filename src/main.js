@@ -7,18 +7,25 @@ import './style/common.css'
 
 // 导入首页
 import App from './App.vue';
+
 // 导入登陆页面
 import Login from './Login.vue'
+
+import router from './router'
 
 Vue.use(ElementUI);
 
 let vm = new Vue({
   el: '#app',
+
   data(){
     return {
       token:localStorage.getItem('token')
     }
   },
+
+  router,
+
   // created(){
   //   this.token = localStorage.getItem('token');
   // },
