@@ -9,12 +9,13 @@
                 <el-input v-model="form.password"></el-input>
             </el-form-item>
             <el-form-item>
-                <el-button @click='login'>登录</el-button>
+                <el-button @click='loginHandler'>登录</el-button>
             </el-form-item>
         </el-form>
     </div>
 </template>
 <script>
+import {mapState,mapActions} from 'vuex'
 export default {
     data(){
         return {
@@ -22,23 +23,11 @@ export default {
         } 
     },
     methods:{
-        login(){
-            $.ajax({
-                url: 'http://39.96.21.48:8099/manager/user/login',
-                method: 'post',
-                data: JSON.stringify(this.form),
-                contentType: 'application/json',
-                success: (res) => {
-                    // 将token设置到浏览器
-                    localStorage.setItem('token', res.data.token)
-                    // 将token赋值给data中的token
-                    window.vm.token = res.data.token
-                    // 调用根据token获取用户信息的方法
-                    // this.findMsg(res.data.token);
-                    // 查询文章
-                    // this.loadArticle();
-                }
-            })
+        // 'login'指的是命名空的名字，也就是login.js这个文件的名字
+        // ['login']指的actions的方法
+        ...mapActions('login',['login']),
+        loginHandler(){
+            this.login(this.form);
         }
     }
 }

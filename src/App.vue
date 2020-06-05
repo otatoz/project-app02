@@ -1,6 +1,7 @@
 <template>
   <div class='container'>
       <div class="header">看点资讯</div>
+      <!-- {{JSON.parse(userInfo).username}} -->
       <div class="left">
         <el-menu default-active='Article' router>
           <el-menu-item index="article">
@@ -38,14 +39,18 @@
 // import Category from './pages/Category.vue'
 // import User from './pages/User.vue'
 // import Comment from './pages/Comment.vue'
-
 export default {
   name: 'App',
   data(){
     return {
-      // currentPage:'Article'
+      userInfo:''
     }
   },
+  
+  // created(){
+  //   let userInfo = localStorage.getItem('userInfo')
+  //   this.userInfo = userInfo
+  // },
   // components: {
   //   Article,
   //   Category,

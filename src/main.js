@@ -12,23 +12,28 @@ import App from './App.vue';
 import Login from './Login.vue'
 
 import router from './router'
+import store from './store'
 
 Vue.use(ElementUI);
+
+import {mapState,mapMutatios, mapMutations} from 'vuex'
 
 let vm = new Vue({
   el: '#app',
 
-  data(){
-    return {
-      token:localStorage.getItem('token')
-    }
+  computed:{
+    ...mapState('login',['token'])
+  },
+  created(){
+    this.initToken()
+  },
+  methods:{
+    ...mapMutations('login',['initToken'])
   },
 
   router,
+  store,
 
-  // created(){
-  //   this.token = localStorage.getItem('token');
-  // },
   render:function(createElement){
     let page = Login;
     if(this.token){
@@ -37,5 +42,3 @@ let vm = new Vue({
     return createElement(page)
   }
 });
-// 将vm设置到全局window
-window.vm = vm;
